@@ -4,3 +4,6 @@
 # js
 **/node_modules/
 **/dist/
+
+# testing
+test.txt
