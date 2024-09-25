@@ -1,0 +1,21 @@
+{
+  "name": "ccwc",
+  "version": "1.0.0",
+  "description": "Unix command line tool wc, run as ccwc (after running `npm run build`)",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "ccwc": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "npx tsc && npm install -g ."
+  },
+  "license": "ISC",
+  "engines": {
+    "node": ">= 20.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.0",
+    "typescript": "^5.6.2"
+  }
+}
