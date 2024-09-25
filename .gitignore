@@ -1,2 +1,6 @@
 # ide
 *.code-workspace
+
+# js
+**/node_modules/
+**/dist/
