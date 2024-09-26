@@ -2,8 +2,16 @@ import { HelpText, Options } from "./entities.js";
 
 function validateOpts(opts: string[]): Options {
   const agg = opts
-    .reduce((acc, opt) => acc + opt.replaceAll("-", ""), "")
+    .reduce((acc, opt) => {
+      if (opt[0] !== "-") {
+        console.error("Error: invalid option(s) format. Requires '-' (ex. -c)");
+        console.info(HelpText);
+        process.exit(1);
+      }
+      return acc + opt.slice(1);
+    }, "")
     .split("");
+
   agg.forEach((opt) => {
     if (!"clmw".includes(opt)) {
       console.error("Error: invalid option(s) passed");
@@ -11,6 +19,7 @@ function validateOpts(opts: string[]): Options {
       process.exit(1);
     }
   });
+
   return {
     countBytes: agg.includes("c"),
     countChars: agg.includes("m"),
