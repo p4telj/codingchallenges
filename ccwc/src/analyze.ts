@@ -65,7 +65,7 @@ function adjustChunk(prevChunk: Chunk, buffer: Buffer): Chunk {
   return chunk;
 }
 
-export async function analyze(opts: Options, file: string) {
+export async function analyze(opts: Options, file: string): Promise<Counts> {
   try {
     const counts = initCounts();
     const stream = fs.createReadStream(path.resolve(file));
@@ -96,6 +96,7 @@ export async function analyze(opts: Options, file: string) {
     }
 
     output(opts, file, counts);
+    return counts;
   } catch (e) {
     console.error(e);
     process.exit(1);

@@ -8,14 +8,35 @@
     "ccwc": "./dist/index.js"
   },
   "scripts": {
-    "build": "npx tsc && npm install -g ."
+    "build": "npx tsc && npm install -g .",
+    "test": "jest"
   },
   "license": "ISC",
   "engines": {
     "node": ">= 20.17.0"
   },
+  "jest": {
+    "preset": "ts-jest",
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "useESM": true
+        }
+      ]
+    }
+  },
   "devDependencies": {
+    "@types/jest": "^29.5.13",
     "@types/node": "^22.7.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
     "typescript": "^5.6.2"
   }
 }
