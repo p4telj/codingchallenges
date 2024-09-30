@@ -15,3 +15,35 @@ export type Options = {
   countWords: boolean;
   countChars: boolean;
 };
+
+export type Counts = {
+  bytes: number;
+  lines: number;
+  words: number;
+  chars: number;
+};
+
+export function initCounts(): Counts {
+  return {
+    bytes: 0,
+    lines: 0,
+    words: 0,
+    chars: 0,
+  };
+}
+
+export type Chunk = {
+  raw: Buffer;
+  adjusted: string;
+  remainingChars: string;
+  prevChunkEndedOnSameLine: boolean;
+};
+
+export function initChunk(): Chunk {
+  return {
+    raw: Buffer.from(""),
+    adjusted: "",
+    remainingChars: "",
+    prevChunkEndedOnSameLine: false,
+  };
+}
