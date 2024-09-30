@@ -20,12 +20,17 @@ function validateOpts(opts: string[]): Options {
     }
   });
 
-  return {
+  const validatedOpts = {
     countBytes: agg.includes("c"),
     countChars: agg.includes("m"),
     countLines: agg.includes("l"),
     countWords: agg.includes("w"),
   };
+  if (validatedOpts.countChars && validatedOpts.countBytes) {
+    console.error("Error: conflicting options passed (-m/-c)");
+    console.info(HelpText);
+    process.exit(1);
+  }
 }
 
 export function validate(opts: string[], file?: string): Options {
