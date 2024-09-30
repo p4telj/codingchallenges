@@ -26,11 +26,13 @@ function validateOpts(opts: string[]): Options {
     countLines: agg.includes("l"),
     countWords: agg.includes("w"),
   };
+
   if (validatedOpts.countChars && validatedOpts.countBytes) {
     console.error("Error: conflicting options passed (-m/-c)");
     console.info(HelpText);
     process.exit(1);
   }
+  return validatedOpts;
 }
 
 export function validate(opts: string[], file?: string): Options {
